@@ -3,7 +3,7 @@ import SearchForm from "./SearchForm";
 import EmployeeCard from "./EmployeeCard";
 import API from "../utils/API";
 import "../styles/Result.css";
-// const MaxResults = 20;
+
 
 class SearchResultContainer extends Component {
   state = {
@@ -53,8 +53,8 @@ class SearchResultContainer extends Component {
     console.log("filterEmployees");
     console.log(searchkey);
     console.log(this.state.result);
-    // this.state.result = this.state.result.filter(this.state.result => this.state.result.includes(searchkey));
-    var filterResult = this.state.allResults.filter(person => person.firstName.includes(searchkey) || person.lastName.includes(searchkey) || person.email.includes(searchkey) || person.phone.includes(searchkey) || person.dob === searchkey)
+   
+    var filterResult = this.state.allResults.filter(person => person.firstName.toLowerCase().includes(searchkey) || person.lastName.includes(searchkey) || person.email.includes(searchkey) || person.phone.includes(searchkey) || person.dob === searchkey)
 
     if (searchkey === '') {
       this.setState({
@@ -77,7 +77,7 @@ else {
     this.setState({ toggleVal: -(this.state.toggleVal) })
     console.log(this.state.toggleVal)
   }
-  // When the form is submitted, search the Giphy API for `this.state.search`
+  // When the form is submitted, search the Employee API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
     const value = event.target.value;
